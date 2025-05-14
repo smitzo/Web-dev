@@ -1,0 +1,17 @@
+go to cloud.mongodb.com
+create a new project
+select AWS -> m0 (free) database
+
+in left side navigation menu under the security section , go to 
+quick start. (we can also find Project settings to set up
+the access rules.)
+
+add user name and password
+add ip adress 0.0.0.0/0 (everywhere)
+
+save settings
+
+under data sercvices > go to cluster0 > then click connect > copy the string and paste it into mongodb compass desktop app
+
+
+open mongodbcompass and enter the URL : mongodb+srv://admin:password@cluster0.1tvzrfi.mongodb.net/ (password=Smit@2812)

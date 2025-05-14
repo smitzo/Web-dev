@@ -1,0 +1,6 @@
+cd project_name
+npm create vite@latest
+select JS or TS
+cd project_name
+npm install
+npm run dev

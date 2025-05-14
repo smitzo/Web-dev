@@ -1,0 +1,95 @@
+<!-- the beginner code was focussed on front end , but in real life we use back end servers to perform CRUD operations
+and acces the todo data from the same account but on multiple devices -->
+<!-- in this approach we will create a backend server 100xdevs/todos ehich return an array of objects containing title description and id 
+ 2 steps : 1. clear the parent dic 2. call append child for each element  -->
+
+<html>
+    
+    <body>
+
+        <div>
+            <h1>add title and description</h1>
+            <input type="text" id="title" placeholder="title">  <br>
+            <input type="text" id="description" placeholder="description"> <br>
+            <div id="container"></div>
+        </div>
+       
+        
+    </body>
+
+    <script>
+        // let globalId=1;
+
+        // function addToDo(){     // this function populates the div with id="container"
+            
+        //     const title=document.getElementById("title").value 
+        //     const description=document.getElementById("description").value
+        //     const parent=document.getElementById("container")
+        //     parent.appendChild(createChild(title,description,globalId++))   // cleaner way to do parent.appendchild()
+        // }
+
+        function createChild(title, description, id){   
+            const child=document.createElement("div")   // initialize an empty div object
+            const firstGrandParent=document.createElement("div") 
+            firstGrandParent.innerHTML=title;
+
+            const secondGrandParent=document.createElement("div")
+            secondGrandParent.innerHTML=description
+            
+            const thirdGrandParent=document.createElement("button")
+            thirdGrandParent.setAttribute("id","child-"+id)
+            thirdGrandParent.innerHTML="Mark as done";
+            thirdGrandParent.setAttribute("onclick",`markAsDone(${id})`);   //setAttribute sets an attribute to a specific tag 
+           
+
+            child.appendChild(firstGrandParent);
+            child.appendChild(secondGrandParent);
+            child.appendChild(thirdGrandParent);
+            child.setAttribute("id",id);
+            return child;
+        }
+
+        // 1. state will always be an array
+        // 2. every element of state would have title description and id
+        // below function is moderate approach
+        function updateDomAccToState(state){        // given the updated state as the input 
+            const parent =document.getElementById("container");
+            parent.innerHTML=""; // this clears the content of the container 
+            for (let i=0;i<state.length;i++){   // call todo on every element
+                const child= createChild(state[i].title, state[i].description, state[i].id)
+                parent.appendChild(child);
+            }
+
+        }
+
+        updateDomAccToState([{
+            title:"gym1",
+            description:"go to gym from 6 am to  7am",
+            id:1
+        }, {title:"gym2",
+            description:"go to gym from 5 pm to  6.30 pm",
+            id:2
+
+        }])
+
+        window.setInterval(async function (){   // after every 5 second state is checked it is updated if new data is added or existing data is removed 
+            const res=await fetch ("https://sum-server.100xdevs.com/todos")
+            const jsondata=await res.json();
+            updateDomAccToState(jsondata) 
+        }, 5000)
+        
+        function markAsDone(toDoId){
+            const parent=document.getElementById(toDoId)
+            parent.children[2].innerHTML="Done" // parent.children[0] is title div, parent.child[1] is decription div parent.child[2] is button
+
+        }
+        /* this function creates a child with the structure:
+                                <div>
+                                    <div></div>
+                                    <div></div>
+                                    <button></button>
+                                </div>
+
+    </script>
+
+</html>

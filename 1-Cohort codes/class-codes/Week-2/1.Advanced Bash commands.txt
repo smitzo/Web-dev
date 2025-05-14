@@ -1,0 +1,14 @@
+ls -l : shows permissions , owner last modified date , of a directory
+
+ls -r : gives details of sub directories
+
+ls -t gives last modified timestamp
+
+ls -la : shoes all files including hidden files
+
+ls -r shows everything of ls in reverse order
+ls -lr shows everything of ls-l in reverse order
+
+ls -s lists files by size
+
+ls *.txt

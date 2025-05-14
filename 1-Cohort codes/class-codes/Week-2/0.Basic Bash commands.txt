@@ -1,0 +1,30 @@
+Terminal is an interface to do things on your machine
+
+pwd: prints working directory
+
+cd desktop: change directory opens desktop folder(use tab to autocomplete)
+
+cd .. goes back to previous folder
+
+cd ../.. goes back to previous of previous folder
+
+ls: lists all subfolders in a directory
+
+mkdir test1: makes a folder named test1
+
+touch f1.txt : makes an empty .txt file named f1
+
+cat f1.txt : shows content of a file f1.txt
+
+vi:
+
+mv f1.txt new-folder : moves file f1 to new-folder
+
+mv new-folder1 new-folder2 new-folder3 desktop : moves new-folder1,2,3 to desktop
+cp:
+
+nvm:
+
+npm:
+
+node:

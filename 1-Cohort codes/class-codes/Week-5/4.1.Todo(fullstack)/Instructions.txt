@@ -1,0 +1,4 @@
+Create a backend first
+open terminal in Todo folder and run npm init
+
+npm install express jsonwebtoken mongoose

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlowRoads</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="600" height="800"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("3d");
+
+        // Game variables
+        const playerSize = 20;
+        let playerX = canvas.width / 2;
+        let playerY = canvas.height - playerSize;
+        let playerSpeed = 5;
+
+        const roadHeight = 200;
+        const roadColor = "#808080";
+        let roadX = 0;
+
+        function drawRoad() {
+            ctx.fillStyle = roadColor;
+            ctx.fillRect(roadX, 0, roadHeight, canvas.height);
+        }
+
+        function drawPlayer() {
+            ctx.fillStyle = "blue";
+            ctx.fillRect(playerX, playerY, playerSize, playerSize);
+        }
+
+        function update() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw road
+            drawRoad();
+
+            // Draw player
+            drawPlayer();
+
+            // Move road
+            roadX += playerSpeed;
+
+            // Move player
+            if (keys.ArrowUp && playerY > 0) {
+                playerY -= playerSpeed;
+            }
+            if (keys.ArrowDown && playerY < canvas.height - playerSize) {
+                playerY += playerSpeed;
+            }
+
+            // Request next frame
+            requestAnimationFrame(update);
+        }
+
+        // Keyboard input
+        const keys = {};
+        window.addEventListener("keydown", e => {
+            keys[e.code] = true;
+        });
+        window.addEventListener("keyup", e => {
+            keys[e.code] = false;
+        });
+
+        // Start the game loop
+        update();
+    </script>
+</body>
+</html>

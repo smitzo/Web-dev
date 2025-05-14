@@ -1,0 +1,7 @@
+1. node_modules contains all 3rd party libraries we need not touch it
+2. public folder contains public assets like images video files etc
+3. src folder contains all our source code
+4. index.html  contains the div with id = root and src= /src/main.tsx which is starting point
+of our application
+5. package.json contains list of dependencies , devDependencies, versions installed etc info
+6. tsconfig.json has settings about how to compile typescript to json

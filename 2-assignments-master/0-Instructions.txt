@@ -1,0 +1,6 @@
+cd assignments-master 
+cd 01-js or cd week-1 
+
+solve the problem for ex: isAnagram.js write code in that file itself
+
+run npx jest ./tests/anagram.test.js

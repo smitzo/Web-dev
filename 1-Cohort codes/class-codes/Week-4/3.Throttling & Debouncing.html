@@ -1,0 +1,51 @@
+<html>
+    <script>
+// DEBOUNCING ex: when i go to amazon and i search "a" , it can immediately send a backend request or it can be like let the user cook and 
+// whenever i stop typing, after 100 ms it will send the request and give the output . If i start typing again before 100 ms, it means i havent
+// stopped typing and it will cancel the previous request and send a new request. This prevents unnecesary requests to Backend
+
+// Throttling is similar that backend ignores some requests 
+let timeout
+        function debounceCalcSum(){
+            //delay the call to calcSum function until i have not been called for 100ms
+            // and i have been called atleast once
+            // to cancel a clock use clear timeout function
+
+            clearTimeout(timeout)   // clear previous clock
+            timeout= setTimeout(function(){     // start a new 100ms clock
+                calcSum()
+            }, 100);        // to see this infront of your eyes , use 1000 ms timeout instead of 100 ms coz 100 ms is too fast for our eye 
+
+            clearTimeout(timeout)
+        }
+
+        function calcSum(){
+
+            const a=document.getElementById("firstNumber").value
+            const b=document.getElementById("secondNumber").value
+            const element = document.getElementById("final sum")
+            //element.innerHTML=parseInt(a)+parseInt(b)  // string to number i.e "111" => 111   // using this we can give direct answers from frontend
+
+            fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b"+b) // this uses backend of sum-server.100xdevs.com and returns answer to the frontend
+            .then(function (response){                              //chatgpt is a complex model deployed at backend which takes user inp from frontend
+                response.text()                                     // fires query to backend and returns answer to the front end again.
+                .then (function(ans){
+                    document.getElementById("final sum").innerHTML=ans;
+                })
+            });
+            
+        }
+    </script>
+    <body>
+
+        <!-- <input onchange="calcsum" id="firstNumber" type="text"placeholder="enter 1st number" ></input><br> -->
+        <p>------------sum calculator with Debouncing ------------</p>
+        <input  id="firstNumber" type="text"placeholder="enter 1st number" ></input><br>
+        <input  id="secondNumber" type="text"placeholder="enter 2nd number"></input><br>
+        <button onclick="calcSum()">calculate sum</button>
+        <div id="final sum"> </div>
+        <input oninput="calcsum()" id="firstNumber" type="text"placeholder="enter 1st number" ></input><br> -->
+        <input oninput="calcsum()" id="secondNumber" type="text"placeholder="enter 2nd number"></input><br> -->
+
+    </body>
+</html>

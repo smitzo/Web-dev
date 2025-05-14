@@ -1,0 +1,3 @@
+go to src and create new file Message.tsx
+name of file and functions must be PascalCasing for all react components
+parent/root component is "App" and child component is "Message" now react takes this components and creates a datastructure called  a virtual DOM . It is a lightweight in memory representation of actual DOM

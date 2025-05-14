@@ -1,0 +1,49 @@
+-----------------------------------------------------------------------------------
+open terminal cd folder_name
+run npm init -y   :  creates package.json
+run "npm install express" : brings express library locally      
+create index.js
+
+
+const express = require("express")
+const app = express();    // creates a clinic
+app.listen(3000);   //doctor taking a room no 3000 
+                    //i.e doctor is ready now
+
+at this stage if i go on google and write localhost:3000/
+i will get output "Cannot GET /" because we have not 
+introduced the route "/" yet. (status code 404)
+--------------------------------------------------------------------------------
+
+
+const express=require("express")
+const app=express();    
+
+app.get("/", function(req,res){           // route"/"
+    res.send "hi there im doctor smit"
+})
+
+app.listen(3000);
+
+now if i google localhost:3000/ on my local network,
+i will get output acc to the logic written  in our code. (i wont be acces from another country becoz i havent deployed on internet yet)
+
+---------------------------------------------------------------------
+
+GET- going for a consultation to get a check up
+POST-going to get a new kidney inserted
+PUT-going to get a kidney replaced
+DELETE-going to get kidney removed
+
+--------------------------------------------------------------------------------------------------------------
+
+Status codes
+200- everything went fine
+404-doctor not in the hospital
+500-midsurgery light went away ex: (1/0)
+411-inputs were incorrect i.e wrong person came to surgery
+403- not allowed in the hospital
+
+--------------------------------------------------------------------------------------------------------------
+for GET ,query parameters are used
+for POST, data is sent in the body

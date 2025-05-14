@@ -1,0 +1,41 @@
+<!--  This code uses state but without react 
+check Week-5\clicks_counter(react)\clicks_counter\src\App.jsx to see the below code that uses state but with react -->
+
+<html>
+
+    <body>
+        <!-- below div (parent) will contain a button (child) -->
+        <div id="buttonParent"></div>    
+    </body>
+
+    <script>
+
+        const button =  document.createElement("button");   //create new button element(that isnt put yet in the DOM) use appendChild to put it in the DOM
+        // state object (global) initialisation
+        let state={     
+            count:0
+        }
+        
+        // function to update the state object
+        function onbuttonPress(){     // modified version of onclick() function
+            state.count+=1;
+            buttonComponentReRender()
+        }
+
+        // buttonComponent takes state(current count) and returns ( <div></div>)
+        function buttonComponentReRender(){
+            button.innerHTML= `count ${state.count}`;
+            button.removeEventListener("click", onbuttonPress);
+            //button.setAttribute("onclick", `onbuttonPress`);    // upon clicking the button, "onbuttonPress()" will be called. OR use eventListener
+            button.addEventListener("click", onbuttonPress);
+            const buttonParent= document.getElementById("buttonParent")
+            //buttonParent.innerHTML=""; //clear the content of buttonParent div
+            buttonParent.appendChild(button);   //puts the component button in the DOM
+
+        }
+
+        buttonComponentReRender();   //trigger a re-render 
+    
+    </script>
+
+</html>

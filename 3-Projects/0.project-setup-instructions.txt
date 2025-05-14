@@ -1,0 +1,12 @@
+-------------------for frontend -----------------
+1.open terminal at projects folder path (E:\Computer Science\Web Dev\Projects)
+2.run npm create vite@latest
+3.give a project name say say "counter"
+    select react framewoork then select javascript
+4.edit or write the app.jsx or any other file in src folder
+
+5. then in terminal in the folder (E:\Computer Science\Web Dev\Projects\react-counter) ,
+6.run npm install and run npm install prop-types
+
+7.run npm run dev while you are developing the project
+ or run npm run build (when you have completed the project builds a dist folder that can be hosted on aws directly )

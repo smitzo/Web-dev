@@ -1,0 +1,67 @@
+
+Documentation for Setting Up a MongoDB Database with Compass GUI
+1. Create the Database
+Log in to MongoDB Atlas:
+Go to MongoDB Atlas.
+
+Create a Free Tier Cluster:
+
+Click on Create a Database.
+Select the Free Tier (M0) database option.
+Choose Cloud Provider and Region:
+
+Select AWS as the cloud provider.
+Choose the region Mumbai for hosting your database.
+Create the Cluster:
+
+Click Create to initialize your cluster.
+2. Setup User Access and IP Whitelist
+Navigate to Quick Start:
+Once the cluster is created, click on the Quick Start tab.
+
+Create a Database User:
+
+Add a new database user with the following credentials:
+Username: admin
+Password: Smit2812
+Set Up IP Access:
+
+In the IP Address Access List, add the IP range 0.0.0.0/0.
+This setting allows your database to be accessed from any location.
+Note: Use this cautiously in development environments only, as it allows unrestricted access.
+3. View the Created Cluster
+Go to the Overview Section.
+Locate your newly created database cluster labeled as Cluster0.
+4. Connect to the Database
+Click on the Connect button in the Cluster0 section.
+Choose Compass (GUI to visualize MongoDB databases).
+5. Connection String Setup
+Copy the Connection String:
+The connection string is:
+
+perl
+Copy code
+mongodb+srv://admin:<db_password>@cluster0.seqfu.mongodb.net/
+Replace Placeholder Values:
+Update the connection string with the user credentials:
+
+Replace <db_password> with Smit2812.
+The final connection string will look like this:
+
+perl
+Copy code
+mongodb+srv://admin:Smit2812@cluster0.seqfu.mongodb.net/
+6. Connect via MongoDB Compass
+Open MongoDB Compass on your local machine.
+Click on New Connection.
+Paste the updated connection string:
+perl
+Copy code
+mongodb+srv://admin:Smit2812@cluster0.seqfu.mongodb.net/
+Click Connect to establish a connection to your MongoDB database.
+7. Next Steps
+You are now connected to your MongoDB instance via MongoDB Compass.
+You can explore and manage your database collections, documents, and schemas through the GUI.
+
+
+to view/change or modify Password and user seetings  under the security section, go to database access 
