@@ -1,0 +1,74 @@
+<!-- in this approach we will create a backend server 100xdevs/todos ehich return an array of objects containing title description and id   -->
+<!-- Best way to do it is to calculate the difference between states after n seconds and update the dom ex : at t=10 there are 5 todos
+at t=15 there are 7 todos , store the old state (VDOM)--> 
+<html>
+
+    <script>
+        let globalId=1;
+        let todoState = [];
+        let oldTodoState=[];
+
+        function addToDo(){     // this function populates the div with id="container"
+            
+            const title=document.getElementById("title").value 
+            const description=document.getElementById("description").value
+            const parent=document.getElementById("container")
+            todoState.push({
+                title:title,
+                description:description,
+                id:globalId++
+            })
+            updateState(todoState);
+        }
+
+        function removeToDo(){
+            const element=document.getElementById(todo.id)
+            element.parent.removeChild(element)
+        }
+
+        function updateToDo(oldTodo, newTodo){
+            const element= document.getElementById(oldTodo.id);
+            element.children[0] = newTodo.title;
+            element.children[1] = newTodo.description;
+            element.children[2]=newTodo.completed?"Mark as done" :"Done"; 
+        }
+
+        function isTodoUpdated(oldTodo,newTodo){
+
+            if (oldTodo.title != newTodo.title || newTodo.description!= oldTodo.description){
+                
+
+            }
+        }
+
+        function updateState(newTodos){
+            // calculate the diff bw new Todos and Old Todos
+            // specifically , findout what todos are added , deleted , updated
+            const added=[];
+            const removed=[];
+            const updated=[];
+
+            //calculate these 3 arrays 
+            // call addTodo, removeTodo , updateTodo functions on each of the elements
+            oldTodoState=newTodos;
+
+        }
+
+    </script>
+
+        
+<body>
+
+    <div>
+        <h1>add title and description</h1>
+        <input type="text" id="title" placeholder="title">  <br>
+        <input type="text" id="description" placeholder="description"> <br>
+        <button onclick="addToDo">Add Todo</button>
+        <div id ="todos"></div>
+        <div id="container"></div>
+    </div>
+   
+    
+</body>
+
+</html>

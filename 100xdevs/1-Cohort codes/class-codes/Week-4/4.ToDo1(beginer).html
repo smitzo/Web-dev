@@ -1,0 +1,94 @@
+<!-- these are easier approach (only frontend focussed )but with some diasadvantage stated at the  of this code  -->
+<html>
+    <script>
+        let globalId=1;
+        function addToDo(){     // this function populates the div with id="container"
+            
+            const title=document.getElementById("title").value 
+            const description=document.getElementById("description").value
+            const parent=document.getElementById("container")
+            //  innerHTML code will get over written when new task is added, but we want to append tasks not over write them
+
+            //1. bad approach to add taks 
+            /*const originalHTML=document.getElementById("container").innerHTML
+            document.getElementById("container").innerHTML= originalHTML+ ` 
+            <div>
+                <div>${title}</div>
+                <div>${description}</div>
+                <button> Mark as done </button>
+            
+            </div>
+            `   
+            */
+
+           //2. moderate approach to add tasks
+            parent.appendChild(createChild(title,description,globalId++))   // cleaner way to do parent.appendchild()
+            //  OR
+            // parent.appendChild(`  // dirtier way to do parent.appendchild()                
+            //     <div>
+            //         <div>${title}</div>
+            //         <div>${description}</div>
+            //         <button> Mark as done </button>
+            //      </div>
+            // `);
+        }
+
+        function createChild(title, description, id){   
+            const child=document.createElement("div")   // initialize an empty div object
+            const firstGrandParent=document.createElement("div") 
+            firstGrandParent.innerHTML=title;
+
+            const secondGrandParent=document.createElement("div")
+            secondGrandParent.innerHTML=description
+            
+            const thirdGrandParent=document.createElement("button")
+            thirdGrandParent.setAttribute("id","child-"+id)
+            thirdGrandParent.innerHTML="Mark as done";
+            thirdGrandParent.setAttribute("onclick",`markAsDone(${id})`);   //setAttribute sets an attribute to a specific tag 
+           
+
+            child.appendChild(firstGrandParent);
+            child.appendChild(secondGrandParent);
+            child.appendChild(thirdGrandParent);
+            child.setAttribute("id",id);
+            return child;
+        }
+        
+        function markAsDone(toDoId){
+            const parent=document.getElementById(toDoId)
+            parent.children[2].innerHTML="Done" // parent.children[0] is title div, parent.child[1] is decription div parent.child[2] is button
+
+        }
+        /* this function creates a child with the structure:
+                                <div>
+                                    <div></div>
+                                    <div></div>
+                                    <button></button>
+                                </div>
+
+    </script>
+
+    <body>
+
+        <div>
+            <h1>add title and description</h1>
+            <input type="text" id="title" placeholder="title">  <br>
+            <input type="text" id="description" placeholder="description"> <br>
+            <button onclick="addToDo()"> add todo </button>
+            <div id="container"></div>
+        </div>
+       
+        
+    </body>
+</html>
+
+<!-- problems:
+0. this data is tored in the local memory only
+1. this approach wont work if we have a todos put on a server with multiple clients 
+2. very hard to add and delete todo elements
+3. no central state
+4. what if we update todo from mobile app
+5. we ll get back new array of todos on the front end , How will we update the DOM then ?
+6. we dont have a update or remove todo option yet
+-->
+

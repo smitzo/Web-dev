@@ -1,0 +1,7 @@
+install Prettier extension , CTRL+, enable format on save 
+cd project_name(react-app)
+npm create vite@latest
+select React then TS
+cd project_name(react-app)
+npm install
+npm run dev

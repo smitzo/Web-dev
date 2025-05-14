@@ -1,0 +1,4 @@
+State is data managed by a component that can change overtime similar to local variables in a function
+Props is input passed to a component similar to function arguments 
+
+Props are immutable and state is mutable they both cause a re render on change

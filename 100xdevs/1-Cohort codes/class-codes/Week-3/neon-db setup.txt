@@ -1,0 +1,3 @@
+go to neondb 
+create projesct after putting in username and database name
+youll get connection link : postgresql://testdb_owner:I4ki6lrYPJhA@ep-orange-brook-a5hu80sy.us-east-2.aws.neon.tech/testdb?sslmode=require

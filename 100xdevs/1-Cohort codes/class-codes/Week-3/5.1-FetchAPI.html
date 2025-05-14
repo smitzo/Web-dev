@@ -1,0 +1,31 @@
+<!-- create a simple html css js frontend page where 1. you can see names of 10 people 2. make sure you get these names from an API call
+fetch data from backend http server : https://fakerapi.it/api/v1/persons which gives you json data
+fetch is an asynchronous call and it returns a promise 
+<html> -->
+    <head>
+
+    </head>
+
+    <body>
+        <script>
+            function getUserData(){
+                const response = fetch('https://fakerapi.it/api/v1/persons')  //sends a get request  if i want to send a post request, write const response = fetch('https://fakerapi.it/api/v1/persons',{method:'POST'})
+                .then (function (response){   
+                    response.json()
+                    .then(function(finalData){
+                        console.log(finalData);
+                }) 
+                })
+            }
+
+            // async function getUserData(){
+            //     const response = await fetch('https://fakerapi.it/api/v1/persons')  
+            //     const finalData = await response.json()
+            //     console.log(finalData);
+            //     }
+
+        </script>
+
+        <button onclick="getUserData"> get user data </button>
+    </body>
+</html>
